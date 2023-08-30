@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:isar/isar.dart';
 import 'package:notepad/src/model/note.dart';
 
@@ -17,7 +19,8 @@ class LocalDBServices {
     return Future.value(Isar.getInstance());
   }
 
-  Future<void> saveNote({required note}) async{
+  Future<void> saveNote({required Note note}) async{
+    log("Saving Note : ${note.toJson()}");
     final isar = await db;
     isar.writeTxnSync(() => isar.notes.putSync(note));
   }

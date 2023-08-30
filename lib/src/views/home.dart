@@ -48,12 +48,15 @@ class _HomeViewState extends State<HomeView> {
               child: StreamBuilder(
                   stream: LocalDBServices().listenAllNotes(),
                 builder: (context, snapshot) {
-                    if(snapshot.data != null  ){
+                    if(snapshot.data == null  ){
+                      return const EmptyView();
+                    }
+
+                    if(snapshot.data!.isEmpty){
                       return const EmptyView();
                     }
                   final notes = snapshot.data!;
-
-
+                  
                   return Expanded(
                     child: ListView.builder(
                         itemCount: notes.length,

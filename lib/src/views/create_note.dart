@@ -41,14 +41,10 @@ class _CreateNoteViewState extends State<CreateNoteView> {
       );
 
       localDB.saveNote(note: newNote);
-
-
-
       _titleController.dispose();
       _descriptionController.dispose();
-
-
     }
+
     return Scaffold(
       body: SafeArea(
         child: Column(
